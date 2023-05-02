@@ -1,4 +1,5 @@
 import 'package:amitproject/2_controller/bottom_navigation_bar/bottomnavigationbar_cubit.dart';
+import 'package:amitproject/2_controller/profile_cubit/profile_cubit.dart';
 import 'package:amitproject/utility/app_colors.dart';
 import 'package:amitproject/utility/app_images.dart';
 import 'package:amitproject/utility/app_strings.dart';
@@ -20,6 +21,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     context.read<BottomNavigationBarCubit>().currentIndex=0;
     context.read<HomeCubit>().getAllJobs();
     context.read<HomeCubit>().getSuggestedJobs();
+    context.read<ProfileCubit>().getProfileInformation();
     super.initState();
   }
   @override

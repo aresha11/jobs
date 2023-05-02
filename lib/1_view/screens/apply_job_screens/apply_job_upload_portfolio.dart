@@ -259,7 +259,7 @@ class ApplyJobUploadPortfolio extends StatelessWidget {
                             radius: 25,
                             backgroundColor: AppColors.secondaryColor,
                             child: ImageIcon(
-                              AssetImage(AppImages.shareVia),
+                              AssetImage(AppImages.documentUpload),
                               size: 30,
                             ),
                           ),

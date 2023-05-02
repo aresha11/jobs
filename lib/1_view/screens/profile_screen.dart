@@ -1,3 +1,4 @@
+import 'package:amitproject/0_model/apply_job_model.dart';
 import 'package:amitproject/1_view/screens/splash_screen.dart';
 import 'package:amitproject/1_view/widgets/primary_text.dart';
 import 'package:amitproject/1_view/widgets/profile_column.dart';
@@ -166,17 +167,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               ProfileColumn(
-                                  title: AppStrings.applied, number: "46"),
-                              const Divider(
-                                height: 12,
-                                color: Colors.black,
-                                thickness: 8,
+                                  title: AppStrings.applied, number: ApplyJobModel.data.length.toString()),
+                              const VerticalDivider(
+                                indent: 10,
+                                endIndent: 10,
+                                color: AppColors.blackColor,
+                                thickness: .5,
                               ),
                               ProfileColumn(
                                   title: AppStrings.reviewed, number: "23"),
-                              const Divider(
-                                color: AppColors.secondaryButtonColor,
-                                thickness: 3,
+                              const VerticalDivider(
+                                indent: 10,
+                                endIndent: 10,
+                                color: AppColors.blackColor,
+                                thickness: .5,
                               ),
                               ProfileColumn(
                                   title: AppStrings.contacted, number: "16"),
@@ -228,7 +232,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: 2.h,),
                         ProfileRow(prefixIcon: Icons.photo,
                             title: AppStrings.portfolio,
-                            onPress: () {}),
+                            onPress: () {
+                          Navigator.pushNamed(context, AppRoutes.portfolioScreen);
+
+                            }),
                         SizedBox(height: 2.h,),
                         const Divider(
                           thickness: 2, color: AppColors.secondaryColor,),

@@ -24,4 +24,9 @@ class EditProfileBioAddressMobileSuccessState extends ProfileState {
 class EditProfileBioAddressMobileFailedState extends ProfileState {}
 
 
+class LoadingDataState extends ProfileState {}
+class GetDataSuccessState extends ProfileState {}
+class GetDataFailedState extends ProfileState {}
+
+
 

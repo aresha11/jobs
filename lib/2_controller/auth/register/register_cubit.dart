@@ -6,7 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../utility/routes.dart';
-import '../../../local/shared_preference.dart';
+import '../../database/local/shared_preference.dart';
 
 
 

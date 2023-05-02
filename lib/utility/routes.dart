@@ -25,6 +25,7 @@ class AppRoutes{
   static const String termsAndConditionRoute    ="TermsAndConditionScreen";
   static const String privacyPolicyRoute    ="privacyPolicyScreen";
   static const String applyJobDataSubmittedScreenRoute    ="ApplyJobDataSubmittedScreenRoute";
+  static const String portfolioScreen    ="PortfolioScreen";
 
 
 }

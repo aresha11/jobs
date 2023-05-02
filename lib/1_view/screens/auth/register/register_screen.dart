@@ -9,8 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../2_controller/database/shared/auth/register/register_cubit.dart';
-import '../../../../utility/routes.dart';
+import '../../../../2_controller/auth/register/register_cubit.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);

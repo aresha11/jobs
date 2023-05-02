@@ -8,7 +8,7 @@ import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../2_controller/database/shared/auth/login/login_cubit.dart';
+import '../../../../2_controller/auth/login/login_cubit.dart';
 import '../../../../utility/routes.dart';
 import '../../../widgets/primary_text.dart';
 

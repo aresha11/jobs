@@ -127,9 +127,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 10.h,
                               child: const CircularProgressIndicator()))
                       :
-                          state is GetSuggestedDataErrorState?
-                    const Center(child: Text("Check Your Inter Net",style: TextStyle(fontSize: 22,color: AppColors.blackColor),))
-              :
+                      //             state is GetSuggestedDataErrorState?
+                      //       const Center(child: Text("Check Your Inter Net",style: TextStyle(fontSize: 22,color: AppColors.blackColor),))
+                      // :
                       ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: SuggestedJobsModel.data.length,

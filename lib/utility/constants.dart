@@ -12,3 +12,5 @@ const userSentMessageEndPoint = 'chat/user';
 const addFavouriteJopEndPoint = 'favorites';
 const getFavouriteJopEndPoint = 'favorites/';
 const applyJopEndPoint = 'apply';
+const addPortfolioEndPoint = 'user/profile/portofolios/';
+const getProfileInfo = 'auth/profile/';

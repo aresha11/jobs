@@ -86,6 +86,8 @@ static String tryAnotherSearch="Try searching with different keywords so we can 
  static String noHandPhone="No.HandPhone";
  static String name="Name";
  static String changePhoto="Change  Photo";
+ static String aboutProfile="I'm Rafif Dian Axelingga, I’m UI/UX Designer, I have experience designing UI Design for approximately 1 year. I am currently joining the Vektora studio team based in Surakarta, Indonesia.I am a person who has a high spirit and likes to work to achieve what I dream of.";
+
 
 
 /////   saved
@@ -174,5 +176,21 @@ static String tryAnotherSearch="Try searching with different keywords so we can 
  static String appliedJob ="Applied Job";
  static String job ="Job";
  static String posted2DaysAgo ="Posted 2 days ago";
+
+
+
+ // portfolio
+ static String addPortfolioHere ="Add Portfolio Here";
+
+
+
+
+ //privacy
+ static String yourPrivacy ="Your privacy is important";
+ static String dataControllers ="Data controllers and contract partners";
+
+
+
+
 
 }

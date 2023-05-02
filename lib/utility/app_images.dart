@@ -42,6 +42,7 @@ static String developerCategory="assets/code.png";
 static String illustratorCategory="assets/code.png";
 static String uiDesigner="assets/uiDesigner.png";
 static String registerSuccess="assets/registerSuccess.png";
+static String documentUpload="assets/document-upload.png";
 
 
 

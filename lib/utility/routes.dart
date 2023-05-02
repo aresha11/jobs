@@ -25,6 +25,12 @@ class AppRoutes{
   static const String termsAndConditionRoute    ="TermsAndConditionScreen";
   static const String privacyPolicyRoute    ="privacyPolicyScreen";
   static const String applyJobDataSubmittedScreenRoute    ="ApplyJobDataSubmittedScreenRoute";
+  static const String portfolioScreen    ="PortfolioScreen";
+  static const String personalDetailsScreenRoute    ="PersonalDetailsScreen";
+  static const String educationScreenRoute    ="EducationScreen";
+  static const String experienceScreenRoute    ="ExperienceScreen";
+  static const String completePortfolioScreenRoute    ="CompletePortfolioScreen";
+  static const String completeProfileScreenRoute    ="CompleteProfileScreen";
 
 
 }

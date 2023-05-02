@@ -86,6 +86,8 @@ static String tryAnotherSearch="Try searching with different keywords so we can 
  static String noHandPhone="No.HandPhone";
  static String name="Name";
  static String changePhoto="Change  Photo";
+ static String aboutProfile="I'm Rafif Dian Axelingga, I’m UI/UX Designer, I have experience designing UI Design for approximately 1 year. I am currently joining the Vektora studio team based in Surakarta, Indonesia.I am a person who has a high spirit and likes to work to achieve what I dream of.";
+
 
 
 /////   saved
@@ -174,5 +176,33 @@ static String tryAnotherSearch="Try searching with different keywords so we can 
  static String appliedJob ="Applied Job";
  static String job ="Job";
  static String posted2DaysAgo ="Posted 2 days ago";
+
+
+
+ // portfolio
+ static String addPortfolioHere ="Add Portfolio Here";
+
+
+
+
+ //privacy
+ static String yourPrivacy ="Your privacy is important";
+ static String dataControllers ="Data controllers and contract partners";
+ static String completed ="Completed";
+ static String completeYourProfile ="Complete Your Profile";
+
+// onboard
+
+ static const String onBoardText = "Find a job, and ";
+ static const String onBoardTextBlue = "start building ";
+ static const String onBoardTextBlack = "your career from now on";
+ static const String onBoardText1 = "Explore over 25,924 available job roles and upgrade your operator now.";
+ static const String onBoardText2 = "Hundreds of jobs are waiting for you to ";
+ static const String onBoardText2Blue = "join together";
+ static const String onBoardText3 = "Immediately join us and start applying for the job you are interested in.";
+ static const String onBoardText4 = "Get the best ";
+ static const String onBoardText4Blue = "choice for the job ";
+ static const String onBoardText4Black = "for the job you've always dreamed of";
+ static const String onBoardText5 = "The better the skills you have, the greater the good job opportunities for you.";
 
 }

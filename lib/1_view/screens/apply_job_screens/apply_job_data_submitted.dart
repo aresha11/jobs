@@ -53,7 +53,9 @@ class ApplyJobDataSubmitted extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               MainButton(
-                onPressed: () {Navigator.popAndPushNamed(context, AppRoutes.homeLayoutRoute);},
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(context,  AppRoutes.homeLayoutRoute, (route) => false);
+                },
                 title: AppStrings.backHome,
                 textColor: Colors.white,
                 textSize: 15.sp,

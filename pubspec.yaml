@@ -57,6 +57,9 @@ dependencies:
   tbib_splash_screen: ^0.0.6
   dialogs: ^0.0.7
   flutter_animated_dialog: ^2.0.1
+  file_picker:
+  smooth_page_indicator:
+  percent_indicator:
 
 
 

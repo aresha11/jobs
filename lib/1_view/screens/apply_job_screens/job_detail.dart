@@ -72,9 +72,10 @@ class _JobDetailsState extends State<JobDetails> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.black),
-                  child: SuggestedJobsModel.data[widget.index].image.toString() == 'null'
-                      ? ImageIcon(AssetImage(AppImages.profile))
-                      : Image.network(SuggestedJobsModel.data[widget.index].image.toString())),
+                  child: //SuggestedJobsModel.data[widget.index].image.toString() == 'null'
+                     // ?
+                  ImageIcon(AssetImage(AppImages.profile))),
+                     // : Image.network(SuggestedJobsModel.data[widget.index].image.toString())),
               SizedBox(
                 height: 1.h,
               ),
@@ -94,6 +95,7 @@ class _JobDetailsState extends State<JobDetails> {
                     color:  AppColors.neutral700,
                     fontWeight: FontWeight.w400,
                     size: 10.sp,
+                    maxLines: 2,
                   ),
                   SizedBox(width: .75.w,),
                   Container(
@@ -104,11 +106,15 @@ class _JobDetailsState extends State<JobDetails> {
                         color:  AppColors.neutral500),
                   ),
                   SizedBox(width: .75.w,),
-                  PrimaryText(
-                    title:SuggestedJobsModel.data[widget.index].location.toString(),
-                    color: AppColors.neutral700,
-                    fontWeight: FontWeight.w400,
-                    size: 10.sp,
+                  Container(
+                    width: 70.w,
+                    child: PrimaryText(
+                      title:SuggestedJobsModel.data[widget.index].location.toString(),
+                      color: AppColors.neutral700,
+                      fontWeight: FontWeight.w400,
+                      size: 10.sp,
+                      maxLines: 4,
+                    ),
                   ),
                 ],
               ),
@@ -452,6 +458,7 @@ class _JobDetailsState extends State<JobDetails> {
                           size: 10.sp,
                           color: AppColors.neutral600,
                           fontWeight: FontWeight.w400,
+                          maxLines: 7,
                         ),
                         SizedBox(
                           height: 4.h,

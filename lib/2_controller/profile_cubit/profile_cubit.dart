@@ -1,4 +1,5 @@
 import 'package:amitproject/0_model/edit_profile_bio_address_mobile_model.dart';
+import 'package:amitproject/0_model/get_user_information_model.dart';
 import 'package:amitproject/2_controller/database/local/shared_preference.dart';
 import 'package:amitproject/2_controller/database/shared/dio/dio_helper.dart';
 import 'package:amitproject/utility/constants.dart';
@@ -43,6 +44,27 @@ DioHelper dioHelper=DioHelper();
     });
   }
 
+  GetUserInformationModel getUserInformationModel=GetUserInformationModel();
+
+  void getProfileInformation() {
+    emit(LoadingDataState());
+    dioHelper.getData(
+
+      url:getProfileInfo+SharedPreference.get(key: "id").toString(),
+      token: SharedPreference.get(key: "token") ,
+    ).then((value) {
+      if (value.statusCode ==200) {
+        emit(GetDataSuccessState());
+        getUserInformationModel=value.data;
+        print(getUserInformationModel.name.toString());
+      }
+    }).catchError((error) {
+      if (kDebugMode) {
+        print(error);
+      }
+      emit(GetDataFailedState());
+    });
+  }
 
 
 

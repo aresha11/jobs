@@ -6,7 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../utility/routes.dart';
-import '../../../local/shared_preference.dart';
+import '../../database/local/shared_preference.dart';
 
 
 
@@ -88,7 +88,7 @@ class RegisterCubit extends Cubit<RegisterState> {
          SharedPreference.put(key: "name", value:map["profile"]["name"]);
          SharedPreference.put(key: "email", value:map["profile"]["email"]);
          SharedPreference.put(key: "loggedIn", value:"true");
-        Navigator.pushNamed(context, AppRoutes.interestedWorkScreenRoute);
+         Navigator.pushNamedAndRemoveUntil(context,  AppRoutes.interestedWorkScreenRoute, (route) => false);
         // flutterToast(
         //   msg: 'Loged in Successfully',
         //   color: Colors.green,

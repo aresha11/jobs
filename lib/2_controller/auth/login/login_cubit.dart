@@ -3,17 +3,15 @@ import 'package:amitproject/2_controller/database/local/shared_preference.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../../../../0_model/user_model.dart';
 import '../../../../../utility/constants.dart';
 import '../../../../../utility/routes.dart';
-import '../../dio/dio_helper.dart';
+import '../../database/shared/dio/dio_helper.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  UserModel userModel=UserModel();
   Map map={};
 
   Color? color;
@@ -66,7 +64,7 @@ class LoginCubit extends Cubit<LoginState> {
         SharedPreference.put(key: "name", value:map["user"]["name"]);
         SharedPreference.put(key: "email", value:map["user"]["email"]);
         SharedPreference.put(key: "loggedIn", value:"true");
-        Navigator.pushNamed(context, AppRoutes.homeLayoutRoute);
+        Navigator.pushNamedAndRemoveUntil(context,  AppRoutes.homeLayoutRoute, (route) => false);
         // flutterToast(
         //   msg: 'Loged in Successfully',
         //   color: Colors.green,

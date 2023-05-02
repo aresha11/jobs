@@ -49,9 +49,9 @@ class DioHelper {
   }
 
   //This Function that's Used To Post Data to API based on URL(End Points) and Headers.
-   Future postData({
+   Future <Response>postData({
     required String url,
-    required Map<String, dynamic> data,
+    required dynamic data,
     String? token,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
@@ -60,10 +60,10 @@ class DioHelper {
       dio.options.headers = {
         'Authorization': 'Bearer ${token ?? ''}',
       };
-      dio.options.queryParameters=data;
+     // dio.options.queryParameters=data;
        Response response = await dio.post(
        baseUrl+url,
-        queryParameters: data,
+        //queryParameters: data,
         data: data,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,

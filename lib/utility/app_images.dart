@@ -42,6 +42,11 @@ static String developerCategory="assets/code.png";
 static String illustratorCategory="assets/code.png";
 static String uiDesigner="assets/uiDesigner.png";
 static String registerSuccess="assets/registerSuccess.png";
+static String documentUpload="assets/document-upload.png";
+static String BackgroundIcon="assets/group1.png";
+static String Background1Icon="assets/group2.png";
+static String Background2Icon="assets/group3.png";
+static String blurIcon="assets/Blur.png";
 
 
 

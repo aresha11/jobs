@@ -4,7 +4,6 @@ import 'package:amitproject/utility/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
-
 import '../../utility/app_images.dart';
 import '../database/local/shared_preference.dart';
 

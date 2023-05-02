@@ -2,8 +2,8 @@ import 'package:amitproject/2_controller/apply_job_cubit/apply_job_cubit.dart';
 import 'package:amitproject/2_controller/bottom_navigation_bar/bottomnavigationbar_cubit.dart';
 import 'package:amitproject/2_controller/change_password_cubit/change_password_cubit.dart';
 import 'package:amitproject/2_controller/chat_cubit/chat_cubit.dart';
+import 'package:amitproject/2_controller/complete_profile_cubit/complete_profile_cubit.dart';
 import 'package:amitproject/2_controller/database/local/shared_preference.dart';
-import 'package:amitproject/2_controller/database/shared/auth/login/login_cubit.dart';
 import 'package:amitproject/2_controller/home_cubit/home_cubit.dart';
 import 'package:amitproject/2_controller/profile_cubit/profile_cubit.dart';
 import 'package:amitproject/2_controller/saved_cubit/saved_cubit.dart';
@@ -14,9 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:sizer/sizer.dart';
-import '2_controller/database/shared/auth/register/register_cubit.dart';
-import '2_controller/database/shared/dio/dio_helper.dart';
-import 'firebase_options.dart';
+import '2_controller/auth/register/register_cubit.dart';
+import '2_controller/auth/login/login_cubit.dart';
+import '2_controller/onboard_cubit/onboard_cubit.dart';
+import '2_controller/protofolios_cubit/protofolio_cubit.dart';
 
 void main() async{
 
@@ -47,13 +48,16 @@ class MyApp extends StatelessWidget {
               create: (context) => RegisterCubit(),
             ),
             BlocProvider(
+              create: (context) => OnboardCubit(),
+            ),
+            BlocProvider(
               create: (context) => BottomNavigationBarCubit()..currentIndex=0,
             ),
             BlocProvider(
               create: (context) => ProfileCubit(),
             ),
             BlocProvider(
-              create: (context) => SearchCubit()..searchJobs(""),
+              create: (context) => SearchCubit(),
             ),
             BlocProvider(
               create: (context) => HomeCubit(),
@@ -69,6 +73,12 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => ApplyJobCubit()..addToApplyScreen(),
+            ),
+            BlocProvider(
+              create: (context) => PortfolioCubit(),
+            ),
+            BlocProvider(
+              create: (context) => CompleteProfileCubit(),
             ),
           ],
           child:  LocaleBuilder(

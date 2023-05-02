@@ -1,15 +1,15 @@
-import 'package:amitproject/1_view/screens/splash_screen.dart';
+import 'package:amitproject/0_model/apply_job_model.dart';
 import 'package:amitproject/1_view/widgets/primary_text.dart';
 import 'package:amitproject/1_view/widgets/profile_column.dart';
 import 'package:amitproject/1_view/widgets/profile_row.dart';
 import 'package:amitproject/1_view/widgets/secondary_text.dart';
+import 'package:amitproject/1_view/widgets/text_button.dart';
 import 'package:amitproject/2_controller/database/local/shared_preference.dart';
 import 'package:amitproject/2_controller/profile_cubit/profile_cubit.dart';
 import 'package:amitproject/utility/app_colors.dart';
 import 'package:amitproject/utility/app_images.dart';
 import 'package:amitproject/utility/app_strings.dart';
 import 'package:amitproject/utility/routes.dart';
-import 'package:dialogs/dialogs/progress_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
@@ -96,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             TextButton(
                                                 onPressed: () {
                                                   Navigator.pushNamedAndRemoveUntil(context, AppRoutes.splashScreenRoute, (route) => false);
-                                                  SharedPreference.put(key: "loggedIn",value: "false");
+                                                  SharedPreference.put(key: "loggedIn", value: "false");
                                                 },
                                                 child: Text(
                                                   "Confirm",
@@ -149,7 +149,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         fontWeight: FontWeight.w500),
                         SizedBox(height: 1.h,),
                           PrimaryText(
-                              title:SharedPreference.get(key: "bio"),
+
+                              title:SharedPreference.get(key: "bio").toString()=="null"?
+                                  "Add a bio":SharedPreference.get(key: "bio").toString(),
                               size: 14,
                             color: AppColors.neutral500,
                             fontWeight: FontWeight.w400,
@@ -166,17 +168,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               ProfileColumn(
-                                  title: AppStrings.applied, number: "46"),
-                              const Divider(
-                                height: 12,
-                                color: Colors.black,
-                                thickness: 8,
+                                  title: AppStrings.applied, number: ApplyJobModel.data.length.toString()),
+                              const VerticalDivider(
+                                indent: 10,
+                                endIndent: 10,
+                                color: AppColors.blackColor,
+                                thickness: .5,
                               ),
                               ProfileColumn(
                                   title: AppStrings.reviewed, number: "23"),
-                              const Divider(
-                                color: AppColors.secondaryButtonColor,
-                                thickness: 3,
+                              const VerticalDivider(
+                                indent: 10,
+                                endIndent: 10,
+                                color: AppColors.blackColor,
+                                thickness: .5,
                               ),
                               ProfileColumn(
                                   title: AppStrings.contacted, number: "16"),
@@ -189,10 +194,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SecondaryText(title: AppStrings.about, size: 22),
-                            Text(AppStrings.edit, style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryColor),),
+                            ButtonText(
+                              title:AppStrings.edit,
+                              onPress: () {
+                                Navigator.pushNamed(context, AppRoutes.completeProfileScreenRoute);
+                              },),
                           ],
                         )
 
@@ -228,7 +234,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: 2.h,),
                         ProfileRow(prefixIcon: Icons.photo,
                             title: AppStrings.portfolio,
-                            onPress: () {}),
+                            onPress: () {
+                          Navigator.pushNamed(context, AppRoutes.portfolioScreen);
+
+                            }),
                         SizedBox(height: 2.h,),
                         const Divider(
                           thickness: 2, color: AppColors.secondaryColor,),

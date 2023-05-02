@@ -1,4 +1,4 @@
-const baseUrl = 'http://164.92.246.77/api/';
+const baseUrl = 'http://167.71.79.133/api/';
 const loginEndPoint = 'auth/login';
 const registerEndPoint = 'auth/register';
 const allJobsEndPoint = 'jobs';
@@ -12,3 +12,7 @@ const userSentMessageEndPoint = 'chat/user';
 const addFavouriteJopEndPoint = 'favorites';
 const getFavouriteJopEndPoint = 'favorites/';
 const applyJopEndPoint = 'apply';
+const addPortfolioEndPoint = 'user/profile/portofolios/';
+const getProfileInfo = 'auth/profile/';
+const experienceEndPoint = 'experince';
+const educationEndPoint = 'education';

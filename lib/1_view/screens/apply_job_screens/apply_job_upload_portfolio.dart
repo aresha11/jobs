@@ -11,8 +11,6 @@ import '../../../utility/app_colors.dart';
 import '../../../utility/app_images.dart';
 import '../../../utility/app_strings.dart';
 
-
-
 class ApplyJobUploadPortfolio extends StatelessWidget {
   ApplyJobUploadPortfolio({
     Key? key,
@@ -43,7 +41,9 @@ class ApplyJobUploadPortfolio extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 4.h,),
+                  SizedBox(
+                    height: 4.h,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -184,8 +184,9 @@ class ApplyJobUploadPortfolio extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
-                        border:
-                            Border.all(color: AppColors.neutral200, )),
+                        border: Border.all(
+                          color: AppColors.neutral200,
+                        )),
                     child: Row(
                       children: [
                         Expanded(
@@ -259,7 +260,7 @@ class ApplyJobUploadPortfolio extends StatelessWidget {
                             radius: 25,
                             backgroundColor: AppColors.secondaryColor,
                             child: ImageIcon(
-                              AssetImage(AppImages.shareVia),
+                              AssetImage(AppImages.documentUpload),
                               size: 30,
                             ),
                           ),
@@ -280,31 +281,36 @@ class ApplyJobUploadPortfolio extends StatelessWidget {
                           SizedBox(
                             height: 2.h,
                           ),
-                          Container(
-                            height: 5.h,
-                            width: 80.w,
-                            decoration: BoxDecoration(
-                                color: AppColors.secondaryColor,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                    color: AppColors.primaryColor, width: .5)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ImageIcon(
-                                  AssetImage(AppImages.addFileIcon),
-                                  color: AppColors.primaryColor,
-                                ),
-                                SizedBox(
-                                  width: 2.w,
-                                ),
-                                PrimaryText(
-                                  title: AppStrings.addFile,
-                                  size: 16,
-                                  color: AppColors.primaryColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ],
+                          InkWell(
+                            onTap: (){
+                              context.read<ApplyJobCubit>().pickFile();
+                            },
+                            child: Container(
+                              height: 5.h,
+                              width: 80.w,
+                              decoration: BoxDecoration(
+                                  color: AppColors.secondaryColor,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                      color: AppColors.primaryColor, width: .5)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ImageIcon(
+                                    AssetImage(AppImages.addFileIcon),
+                                    color: AppColors.primaryColor,
+                                  ),
+                                  SizedBox(
+                                    width: 2.w,
+                                  ),
+                                  PrimaryText(
+                                    title: AppStrings.addFile,
+                                    size: 16,
+                                    color: AppColors.primaryColor,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                         ],
@@ -321,9 +327,8 @@ class ApplyJobUploadPortfolio extends StatelessWidget {
                 children: [
                   MainButton(
                     onPressed: () {
-                      print(jobId);
                       context.read<ApplyJobCubit>().applyJob(
-                        index: index,
+                          index: index,
                           context: context,
                           email: email,
                           name: name,

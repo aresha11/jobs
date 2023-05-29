@@ -7,10 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../0_model/suggested_jobs_model.dart';
 import '../../utility/app_images.dart';
 
 class ChatScreen extends StatefulWidget {
-  ChatScreen({Key? key, this.index = 0,}) : super(key: key);
+  ChatScreen({Key? key, required this.index ,}) : super(key: key);
   int index;
 
 
@@ -23,7 +24,6 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<ChatCubit>().getAllMessages(RecentJobsModel.data![widget.index].id.toString());
   }
 
   @override
@@ -35,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: const Color(0xffD1D1D1),
+          backgroundColor:  Colors.grey[50],
           appBar: AppBar(
             leading: IconButton(
                 icon: const Icon(
@@ -47,130 +47,149 @@ class _ChatScreenState extends State<ChatScreen> {
                 }),
             title: Row(
               children: [
-                Image.asset(AppImages.home),
+
                 Text(
-                  RecentJobsModel.data[widget.index].name.toString(),
+                  SuggestedJobsModel.data[widget.index].compName.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
               ],
             ),
             actions: [ImageIcon(AssetImage(AppImages.more),color: Colors.black,),SizedBox(width: 3.w,)],
           ),
-          body: ListView.builder(
-            itemCount: ChatModel.data!.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: 4.w),
-                child:
-                    ChatModel.data!.isEmpty?
-                    const Center(
-                      child: Text("THere Is no Chat ",style: TextStyle(color: Colors.black,fontSize: 50),),
-                    )
-                        :
-                  ChatModel.data![index].senderUser.toString() == "user"
-                      ?  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 2.h),
-                                padding: EdgeInsets.all(2.8.w),
-                                decoration: BoxDecoration(
-                                  color: AppColors.primaryColor,
-                                  borderRadius:BorderRadius.only(topLeft: Radius.circular(5.sp),bottomRight: Radius.circular(5.sp),bottomLeft: Radius.circular(5.sp),),
-                                ),
-                                child: Text(
-                                  ChatModel.data![index].massage.toString(),
-                                  style:
-                                      TextStyle(fontSize: 12.sp, color: Colors.black),
-                                ),
-                              ),
-                            ],
-                          )
-
-                      :
-
-                  Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 2.h),
-                                padding: EdgeInsets.all(2.8.w),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xffE5E7EB),
-                                  borderRadius:BorderRadius.only(topRight: Radius.circular(5.sp),bottomRight: Radius.circular(5.sp),bottomLeft: Radius.circular(5.sp),),
-                                ),
-                                child: Text(
-                                  ChatModel.data![index].massage.toString(),
-                                  style: TextStyle(
-                                      fontSize: 12.sp, color: Colors.black),
-                                ),
-                              ),
-                               SizedBox(width: 4.w,)
-                            ],
-                          )
-
-
-                
-              );
-            },
-          ),
-          bottomSheet: Container(
-            margin: EdgeInsets.symmetric(horizontal: 2.w),
-            child: Row(
+          body: SingleChildScrollView(
+            child: Column(
               children: [
-                CircleAvatar(
-                  backgroundColor: Color(0xffD1D5DB),
-                  radius: 6.5.w,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 6.w,
-                    child: ImageIcon(
-                      AssetImage(AppImages.sendPhoto),
-                      color: AppColors.blackColor,
-                    ),
+                SizedBox(
+                  height: 79.h,
+                  child: ListView.builder(
+                    reverse: true,
+                    itemCount: ChatModel.data.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.symmetric(horizontal: 4.w),
+                        child:
+                            ChatModel.data.isEmpty?
+                            const Center(
+                              child: Text("THere Is no Chat ",style: TextStyle(color: Colors.black,fontSize: 50),),
+                            )
+                                :
+                          ChatModel.data[index].senderUser.toString() == "user"
+                              ?  Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.symmetric(vertical: 2.h),
+                                        padding: EdgeInsets.all(2.8.w),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.primaryColor,
+                                          borderRadius:BorderRadius.only(topLeft: Radius.circular(5.sp),bottomRight: Radius.circular(5.sp),bottomLeft: Radius.circular(5.sp),),
+                                        ),
+                                        child: Text(
+                                          ChatModel.data[index].massage.toString(),
+                                          style:
+                                              TextStyle(fontSize: 12.sp, color: Colors.white),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+
+                              :
+
+                          Row(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.symmetric(vertical: 2.h),
+                                        padding: EdgeInsets.all(2.8.w),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xffE5E7EB),
+                                          borderRadius:BorderRadius.only(topRight: Radius.circular(5.sp),bottomRight: Radius.circular(5.sp),bottomLeft: Radius.circular(5.sp),),
+                                        ),
+                                        child: Text(
+                                          ChatModel.data[index].massage.toString(),
+                                          style: TextStyle(
+                                              fontSize: 12.sp, color: Colors.black),
+                                        ),
+                                      ),
+                                       SizedBox(width: 4.w,)
+                                    ],
+                                  )
+
+
+
+                      );
+                    },
                   ),
                 ),
-                SizedBox(
-                  width: 1.5.w,
-                ),
-                Expanded(
-                    child: InputField(
-                  controller: messageController,
-                  maxLines: 1,
-                  onFieldSubmitted: (String value) {},
-                  radius: 50,
-                  validated: () {},
-                  onchange: (value) {
-                    context.read<ChatCubit>().changIcon(value);
-                  },
-                  onEditingComplete: () {},
-                  hint: "Write Message...",
-                )),
-                SizedBox(
-                  width: 1.5.w,
-                ),
-                CircleAvatar(
-                  backgroundColor: Color(0xffD1D5DB),
-                  radius: 6.5.w,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 6.w,
-                    child: InkWell(
-                        onTap: () {
-                          context.read<ChatCubit>().userSentMessage(
-                              message: messageController.text,
-                              comp_id: "8",
-                              context: context);
-                        },
-                        child: ImageIcon(
-                          context.read<ChatCubit>().sendIcon,
-                        )),
+                Container(
+                  color: Colors.white,
+                  margin: EdgeInsets.symmetric(horizontal: 2.w),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Color(0xffD1D5DB),
+                        radius: 6.5.w,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 6.w,
+                          child: ImageIcon(
+                            AssetImage(AppImages.sendPhoto),
+                            color: AppColors.blackColor,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 1.5.w,
+                      ),
+                      Expanded(
+                          child: InputField(
+                            controller: messageController,
+                            maxLines: 1,
+                            onFieldSubmitted: (String value) {
+                              context.read<ChatCubit>().userSentMessage(
+                                  message: messageController.text,
+                                  comp_id: SuggestedJobsModel.data[widget.index].id.toString(),
+                                  context: context);
+                              messageController.text="";
+                            },
+                            radius: 50,
+                            validated: () {},
+                            onchange: (value) {
+                              context.read<ChatCubit>().changIcon(value);
+                            },
+                            onEditingComplete: () {},
+                            hint: "Write Message...",
+                          )),
+                      SizedBox(
+                        width: 1.5.w,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Color(0xffD1D5DB),
+                        radius: 6.5.w,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 6.w,
+                          child: InkWell(
+                              onTap: () {
+                                context.read<ChatCubit>().userSentMessage(
+                                    message: messageController.text,
+                                    comp_id: SuggestedJobsModel.data[widget.index].id.toString(),
+                                    context: context);
+                                messageController.text="";
+                              },
+                              child: ImageIcon(
+                                context.read<ChatCubit>().sendIcon,
+                              )),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
+
         );
       },
     );

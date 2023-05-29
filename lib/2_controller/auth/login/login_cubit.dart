@@ -63,8 +63,6 @@ class LoginCubit extends Cubit<LoginState> {
       'email': email,
     }).then((value) {
       if (value.statusCode ==200) {
-       // emit(LoginSuccessState(loginModel: LoginModel.fromJson(value.data)));
-       // print(LoginModel.fromJson(value.data));
         map.addAll(value.data);
         SharedPreference.put(key: "token", value:map["token"]);
         SharedPreference.put(key: "id", value:map["user"]["id"]);
@@ -72,7 +70,8 @@ class LoginCubit extends Cubit<LoginState> {
         SharedPreference.put(key: "email", value:map["user"]["email"]);
         SharedPreference.put(key: "loggedIn", value:"true");
 
-        isChecked==true?SharedPreference.put(key: "loginEmail", value: email):SharedPreference.put(key: "loginEmail", value: "");
+
+        SharedPreference.put(key: "loginEmail", value: email);
         isChecked==true?SharedPreference.put(key: "loginPassword", value: password):SharedPreference.put(key: "loginPassword", value: "");
 
         Navigator.pushNamedAndRemoveUntil(context,  AppRoutes.homeLayoutRoute, (route) => false);

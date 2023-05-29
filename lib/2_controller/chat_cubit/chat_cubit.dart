@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import '../../0_model/chat_model.dart';
 import '../../0_model/recent_jobs_model.dart';
+import '../../0_model/suggested_jobs_model.dart';
 import '../../utility/app_images.dart';
 import '../database/shared/dio/dio_helper.dart';
 
@@ -15,8 +16,7 @@ part 'chat_state.dart';
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitial());
 
-  var chats1=[];
-  List<RecentJobsModel> chats=[];
+
 
 DioHelper dioHelper=DioHelper();
 
@@ -25,33 +25,35 @@ DioHelper dioHelper=DioHelper();
   changIcon(String value){
     if(value!=""){
       sendIcon=AssetImage(AppImages.sendMessage);
+      emit(SendState());
     }else{
       sendIcon=AssetImage(AppImages.microphone);
+      emit(NoMessageState());
     }
 
 
   }
 
 
-//
+
 //   void getChats(){
 //
 //
-//     for(int i=1;i<=JobsModel.data!.length;i++){
+//     for(int i=1;i<=SuggestedJobsModel.data.length;i++){
 //       dioHelper.getData(
 //           queryParameters:  {
 //             "user_id":SharedPreference.get(key: "id").toString(),
-//             "comp_id":i
+//             "comp_id":1
 //           },
 //           url: chatsEndPoint,
 //           token: SharedPreference.get(key: "token")
 //       ).then((value) {
 //         chats1= value.data['data'];
 //         if(chats1.length!=0){
-//           allChats=JobsModel.fromJson(JobsModel.data![i]);
+//          var allChats=SuggestedJobsModel.fromJson(value.data![i]);
+//           print("allChats");
 //           print(allChats);
 //         }
-//         print(chats.length);
 //
 //       },);
 //
@@ -77,13 +79,14 @@ DioHelper dioHelper=DioHelper();
     dioHelper.postData(
 
         url:userSentMessageEndPoint,
+        token: SharedPreference.get(key: "token"),
         data: {
           "massage":message,
           "user_id":SharedPreference.get(key: "id"),
           "comp_id":comp_id
         }).then((value) {
-      if (value.statusCode ==500) {
-        print ("sent");
+      if (value.statusCode ==200) {
+        getAllMessages(comp_id);
         emit(SentMessageSuccessState());
       }
     }).catchError((error) {
@@ -97,6 +100,7 @@ DioHelper dioHelper=DioHelper();
 
 
   void getAllMessages(compId) {
+    ChatModel.data.clear();
     emit(GetMessageLoadingState());
     dioHelper.getData(
       queryParameters: {
@@ -108,7 +112,7 @@ DioHelper dioHelper=DioHelper();
     ).then((value) {
       if (value.statusCode ==200) {
         emit(GetMessageSuccessState(chatModel: ChatModel.fromJson(value.data)));
-        print(ChatModel.data![1].massage.toString());
+        //print("");
       }
     }).catchError((error) {
       if (kDebugMode) {

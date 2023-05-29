@@ -24,7 +24,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
 
   @override
   Widget build(BuildContext context) {
-    phoneController.text = SharedPreference.get(key: "mobile").toString()=="null"?"Add a address": SharedPreference.get(key: "mobile");
+    phoneController.text = SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}mobile").toString()=="null"?"Add a address": SharedPreference.get(key: "mobile");
     return BlocConsumer<ChangePasswordCubit, ChangePasswordState>(
       listener: (context, state) {
         // TODO: implement listener

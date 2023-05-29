@@ -21,7 +21,7 @@ class _AppliedScreenState extends State<AppliedScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    //context.read<ApplyJobCubit>().addToApplyScreen();
+    context.read<ApplyJobCubit>().addToApplyScreen();
   }
   @override
   Widget build(BuildContext context) {

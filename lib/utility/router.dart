@@ -53,9 +53,9 @@ Route<dynamic> onGenerate(RouteSettings routeSettings) {
       case AppRoutes.editProfileRoute:
       return MaterialPageRoute(
           builder: (context) => const EditProfileScreen(), settings: routeSettings);
-      case AppRoutes.chatScreen:
-      return MaterialPageRoute(
-          builder: (context) =>  ChatScreen(), settings: routeSettings);
+      // case AppRoutes.chatScreen:
+      // return MaterialPageRoute(
+      //     builder: (context) =>  ChatScreen(), settings: routeSettings);
       case AppRoutes.onBoardingScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(), settings: routeSettings);

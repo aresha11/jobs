@@ -37,9 +37,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     var cubit = context.read<ProfileCubit>();
     nameController.text = SharedPreference.get(key: "name");
-    bioController.text = SharedPreference.get(key: "bio").toString()=="null"?"Add a bio": SharedPreference.get(key: "bio");
-    addressController.text = SharedPreference.get(key: "address").toString()=="null"?"Add a address": SharedPreference.get(key: "address");
-    phoneController.text = SharedPreference.get(key: "mobile").toString()=="null"?"Add a mobile": SharedPreference.get(key: "mobile");
+    bioController.text = SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}bio").toString()=="null"?"Add a bio": SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}bio");
+    addressController.text = SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}address").toString()=="null"?"Add a address": SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}address");
+    phoneController.text = SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}mobile").toString()=="null"?"Add a mobile": SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}mobile");
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
         // TODO: implement listener

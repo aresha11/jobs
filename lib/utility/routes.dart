@@ -12,7 +12,7 @@ class AppRoutes{
   //static const String applyJobBioDataScreenRoute          ="ApplyJobBioDataScreenRoute";
   static const String searchScreenRoute          ="SearchScreen";
   static const String editProfileRoute    ="EditProfileScreen";
-  static const String chatScreen    ="ChatScreen";
+ // static const String chatScreen    ="ChatScreen";
   static const String loginAndSecurity    ="LoginAndSecurity";
   static const String changePassword    ="ChangePassword";
   static const String emailAddress    ="EmailAddress";

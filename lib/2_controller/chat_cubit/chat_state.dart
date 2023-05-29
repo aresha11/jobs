@@ -6,6 +6,15 @@ abstract class ChatState {}
 class ChatInitial extends ChatState {}
 
 
+
+class SendState extends ChatState {}
+class NoMessageState extends ChatState {}
+
+
+
+
+
+
 //////// user sent message
 class SentMessageLoadingState extends ChatState {}
 class SentMessageErrorState extends ChatState {}

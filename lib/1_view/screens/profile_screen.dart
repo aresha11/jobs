@@ -150,8 +150,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: 1.h,),
                           PrimaryText(
 
-                              title:SharedPreference.get(key: "bio").toString()=="null"?
-                                  "Add a bio":SharedPreference.get(key: "bio").toString(),
+                              title:SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}bio").toString()=="null"?
+                                  "Add a bio":SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}bio").toString(),
                               size: 14,
                             color: AppColors.neutral500,
                             fontWeight: FontWeight.w400,

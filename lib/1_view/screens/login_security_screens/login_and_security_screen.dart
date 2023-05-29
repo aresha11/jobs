@@ -15,7 +15,7 @@ class LoginAndSecurityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String>nextPage=[AppRoutes.emailAddress,AppRoutes.phoneNumberScreen,AppRoutes.changePassword,AppRoutes.twoStepVerification,AppRoutes.changePassword,];
     List<String>firstTitle=[AppStrings.emailAddress,AppStrings.phoneNumber,AppStrings.changePassword,AppStrings.twoStepVerification,AppStrings.faceID,];
-    List<String>secondTitle=[SharedPreference.get(key: "email"),"","","",""];
+    List<String>secondTitle=[SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}"),"","","",""];
     return Scaffold(
       body: Container(
         child: Column(

@@ -88,6 +88,7 @@ class RegisterCubit extends Cubit<RegisterState> {
          SharedPreference.put(key: "name", value:map["profile"]["name"]);
          SharedPreference.put(key: "email", value:map["profile"]["email"]);
          SharedPreference.put(key: "loggedIn", value:"true");
+         SharedPreference.put(key: "loginEmail", value: email);
          Navigator.pushNamedAndRemoveUntil(context,  AppRoutes.interestedWorkScreenRoute, (route) => false);
         // flutterToast(
         //   msg: 'Loged in Successfully',

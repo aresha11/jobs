@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
               create: (context) => ChangePasswordCubit(),
             ),
             BlocProvider(
-              create: (context) => SavedCubit()..getAllSavedJobs(),
+              create: (context) => SavedCubit(),
             ),
             BlocProvider(
               create: (context) => ApplyJobCubit()..addToApplyScreen(),

@@ -76,8 +76,8 @@ int currentIndex=0;
     ).then((value) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const ApplyJobDataSubmitted(),));
       Navigator.popAndPushNamed(context, AppRoutes.applyJobDataSubmittedScreenRoute);
-      var ins= SharedPreference.get(key: "applyId").toString()=="null"?job_id.toString():"${SharedPreference.get(key: "applyId")}#$job_id";
-      SharedPreference.put(key: "applyId", value: ins);
+      var ins= SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}").toString()=="null"?job_id.toString():"${SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}")}#$job_id";
+      SharedPreference.put(key: "${SharedPreference.get(key: "loginEmail")}", value: ins);
       print(value.data);
         addToApplyScreen();
      emit(ApplyJobSuccessState());
@@ -92,10 +92,10 @@ int currentIndex=0;
   addToApplyScreen() {
     ApplyJobModel.data.clear();
     if (SharedPreference
-        .get(key: "applyId")
+        .get(key: "${SharedPreference.get(key: "loginEmail")}")
         .toString()
         !="null") {
-      var ides = SharedPreference.get(key: "applyId").toString().split("#");
+      var ides = SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}").toString().split("#");
       List setIdes = ides.toSet().toList();
 
 

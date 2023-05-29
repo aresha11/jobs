@@ -1,4 +1,5 @@
 import 'package:amitproject/0_model/recent_jobs_model.dart';
+import 'package:amitproject/0_model/suggested_jobs_model.dart';
 import 'package:amitproject/1_view/widgets/input_field.dart';
 import 'package:amitproject/1_view/widgets/message_row.dart';
 import 'package:amitproject/2_controller/chat_cubit/chat_cubit.dart';
@@ -20,6 +21,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+   // context.read<ChatCubit>().getChats();
+
   }
   @override
   Widget build(BuildContext context) {
@@ -95,7 +98,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
           SizedBox(
             height: 64.h,
             child: ListView.builder(
-              itemCount: context.read<ChatCubit>().chats.length,
+              itemCount: SuggestedJobsModel.data.length,
                 itemBuilder: (context, index) => MessageRow(index: index,),),
           )
         ],

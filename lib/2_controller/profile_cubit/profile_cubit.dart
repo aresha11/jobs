@@ -31,9 +31,9 @@ DioHelper dioHelper=DioHelper();
     ).then((value) {
       if (value.statusCode ==200) {
         emit(EditProfileBioAddressMobileSuccessState(editProfileBioAddressMobileModel: EditProfileBioAddressMobileModel.fromJson(value.data)));
-        SharedPreference.put(key: "bio", value: EditProfileBioAddressMobileModel.data!.bio.toString());
-        SharedPreference.put(key: "address", value: EditProfileBioAddressMobileModel.data!.address.toString());
-        SharedPreference.put(key: "mobile", value: EditProfileBioAddressMobileModel.data!.mobile.toString());
+        SharedPreference.put(key: "${SharedPreference.get(key: "loginEmail")}bio", value: EditProfileBioAddressMobileModel.data!.bio.toString());
+        SharedPreference.put(key: "${SharedPreference.get(key: "loginEmail")}address", value: EditProfileBioAddressMobileModel.data!.address.toString());
+        SharedPreference.put(key: "${SharedPreference.get(key: "loginEmail")}mobile", value: EditProfileBioAddressMobileModel.data!.mobile.toString());
 
       }
     }).catchError((error) {
@@ -43,28 +43,28 @@ DioHelper dioHelper=DioHelper();
       emit(EditProfileBioAddressMobileFailedState());
     });
   }
-
-  GetUserInformationModel getUserInformationModel=GetUserInformationModel();
-
-  void getProfileInformation() {
-    emit(LoadingDataState());
-    dioHelper.getData(
-
-      url:getProfileInfo+SharedPreference.get(key: "id").toString(),
-      token: SharedPreference.get(key: "token") ,
-    ).then((value) {
-      if (value.statusCode ==200) {
-        emit(GetDataSuccessState());
-        getUserInformationModel=value.data;
-        print(getUserInformationModel.name.toString());
-      }
-    }).catchError((error) {
-      if (kDebugMode) {
-        print(error);
-      }
-      emit(GetDataFailedState());
-    });
-  }
+  //
+  // GetUserInformationModel getUserInformationModel=GetUserInformationModel();
+  //
+  // void getProfileInformation() {
+  //   emit(LoadingDataState());
+  //   dioHelper.getData(
+  //
+  //     url:getProfileInfo+SharedPreference.get(key: "id").toString(),
+  //     token: SharedPreference.get(key: "token") ,
+  //   ).then((value) {
+  //     if (value.statusCode ==200) {
+  //       emit(GetDataSuccessState());
+  //       getUserInformationModel=value.data;
+  //       print(getUserInformationModel.name.toString());
+  //     }
+  //   }).catchError((error) {
+  //     if (kDebugMode) {
+  //       print(error);
+  //     }
+  //     emit(GetDataFailedState());
+  //   });
+  // }
 
 
 

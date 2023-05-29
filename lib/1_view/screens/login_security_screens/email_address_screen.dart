@@ -65,7 +65,7 @@ class EmailAddressScreen extends StatelessWidget {
                           onEditingComplete: (){},
                           onFieldSubmitted: (){},
                         prefixIcon: ImageIcon(AssetImage(AppImages.email)),
-                        hint: SharedPreference.get(key: "email"),
+                        hint: SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}"),
 
                       ),
                       SizedBox(height: 62.h,),

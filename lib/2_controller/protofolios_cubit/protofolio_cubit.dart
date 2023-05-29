@@ -34,6 +34,7 @@ class PortfolioCubit extends Cubit<PortfolioState> {
           token: SharedPreference.get(key: 'token'),
           data: data)
           .then((value) {
+            getPortfolios();
         emit(AddPortfolioSuccessState());
         print(value.data);
       }).catchError((onError) {
@@ -64,6 +65,26 @@ class PortfolioCubit extends Cubit<PortfolioState> {
     }
 
 
+    deletePortfolio(){
+
+      emit(DeletePortfolioLoadingState());
+      dioHelper
+          .deleteData(
+        url: addPortfolioEndPoint +
+            SharedPreference.get(key: "id").toString(),
+        token: SharedPreference.get(key: 'token'),
+      )
+          .then((value) {
+            getPortfolios();
+        emit(DeletePortfolioSuccessState());
+        print(value.data);
+      }).catchError((onError) {
+        emit(DeletePortfolioFailedInitial());
+        throw onError;
+      });
+
+
+    }
 
 
 

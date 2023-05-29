@@ -1,5 +1,7 @@
 import 'package:amitproject/1_view/widgets/primary_text.dart';
+import 'package:amitproject/2_controller/protofolios_cubit/protofolio_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../utility/app_colors.dart';
@@ -62,9 +64,14 @@ class CvItem extends StatelessWidget {
           SizedBox(
             width: 2.w,
           ),
-          ImageIcon(
-            AssetImage(AppImages.closeCircle),
-            color: AppColors.redColor,
+          InkWell(
+            onTap: (){
+              context.read<PortfolioCubit>().deletePortfolio();
+            },
+            child: ImageIcon(
+              AssetImage(AppImages.closeCircle),
+              color: AppColors.redColor,
+            ),
           ),
         ],
       ),

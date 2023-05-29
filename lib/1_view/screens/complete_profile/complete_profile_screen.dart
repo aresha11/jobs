@@ -55,7 +55,9 @@ class CompleteProfileScreen extends StatelessWidget {
                         .read<CompleteProfileCubit>()
                         .percentage == 0.25 ?'25%':context
                         .read<CompleteProfileCubit>()
-                        .percentage == 0.5 ? '50%':'100%',
+                        .percentage == 0.5 ? '50%':context
+                            .read<CompleteProfileCubit>()
+                            .percentage == 0.75 ? '75%':'100%',
                       color: AppColors.primaryColor,
                       size: 24,
                       fontWeight: FontWeight.w500,

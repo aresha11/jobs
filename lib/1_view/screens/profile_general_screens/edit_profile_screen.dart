@@ -169,7 +169,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                        cubit.editProfileBioAddressMobile(
                          bio: bioController.text,
                          address:addressController.text,
-                         mobile: phoneController.text
+                         mobile: phoneController.text,
                        );
                        Navigator.pop(context);
                      },

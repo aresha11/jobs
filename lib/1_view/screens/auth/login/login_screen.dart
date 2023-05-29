@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../2_controller/auth/login/login_cubit.dart';
+import '../../../../2_controller/database/local/shared_preference.dart';
 import '../../../../utility/routes.dart';
 import '../../../widgets/primary_text.dart';
 
@@ -27,6 +28,17 @@ class _LoginScreenState extends State<LoginScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   var formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+
+    usernameController.text=SharedPreference.get(key: "loginEmail").toString()=="null"?"":SharedPreference.get(key: "loginEmail");
+    passwordController.text=SharedPreference.get(key: "loginPassword").toString()=="null"?"":SharedPreference.get(key: "loginPassword");
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +125,32 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         Row(
                           children: [
-                            Expanded(child: Text(AppStrings.rememberMe)),
+                            Expanded(
+                                child:
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Checkbox(
+                                      materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                      value: context.read<LoginCubit>().isChecked,
+                                      onChanged: (bool? value) {
+                                        context.read<LoginCubit>().changeCheck();
+                                        print(value);
+                                      },
+                                      activeColor: AppColors.primaryColor,
+                                      checkColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(5)),
+                                    ),
+                                    PrimaryText(
+                                      title: AppStrings.rememberMe,
+                                      fontWeight: FontWeight.w400,
+                                      size: 12.sp,
+                                    ),
+                                  ],
+                                ),
+                            ),
                             ButtonText(
                               onPress: () {},
                               title: AppStrings.forgotPassword,

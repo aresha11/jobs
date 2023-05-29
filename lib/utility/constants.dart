@@ -13,6 +13,7 @@ const addFavouriteJopEndPoint = 'favorites';
 const getFavouriteJopEndPoint = 'favorites/';
 const applyJopEndPoint = 'apply';
 const addPortfolioEndPoint = 'user/profile/portofolios/';
+const deletePortfolioEndPoint = 'user/profile/portofolios/';
 const getProfileInfo = 'auth/profile/';
 const experienceEndPoint = 'experince';
 const educationEndPoint = 'education';

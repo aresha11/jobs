@@ -25,10 +25,13 @@ class SharedPreference
       return await sharedPreferences.setBool(key, value);
     }
 
-    else
+    else if(value is int)
     {
       return await sharedPreferences.setInt(key, value);
-    }
+    }else
+      {
+        return await sharedPreferences.setDouble(key, value);
+      }
   }
 
   // this fun to get data already saved in local data base

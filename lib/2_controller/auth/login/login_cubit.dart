@@ -12,6 +12,13 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
+  bool isChecked=false;
+
+  changeCheck(){
+    isChecked=!isChecked;
+    emit(RememberState());
+  }
+
   Map map={};
 
   Color? color;
@@ -64,6 +71,10 @@ class LoginCubit extends Cubit<LoginState> {
         SharedPreference.put(key: "name", value:map["user"]["name"]);
         SharedPreference.put(key: "email", value:map["user"]["email"]);
         SharedPreference.put(key: "loggedIn", value:"true");
+
+        isChecked==true?SharedPreference.put(key: "loginEmail", value: email):SharedPreference.put(key: "loginEmail", value: "");
+        isChecked==true?SharedPreference.put(key: "loginPassword", value: password):SharedPreference.put(key: "loginPassword", value: "");
+
         Navigator.pushNamedAndRemoveUntil(context,  AppRoutes.homeLayoutRoute, (route) => false);
         // flutterToast(
         //   msg: 'Loged in Successfully',

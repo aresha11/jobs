@@ -231,7 +231,7 @@ class ApplyJobBioDataScreen extends StatelessWidget {
                       onchange: (v){},
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
-                      hint: AppStrings.email,
+                      hint: AppStrings.phoneNumber,
                       prefixIcon: CountryListPick(
                           theme: CountryTheme(
                             isShowFlag: true,

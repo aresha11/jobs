@@ -1,6 +1,7 @@
 import 'package:amitproject/1_view/widgets/input_field.dart';
 import 'package:amitproject/1_view/widgets/main_button.dart';
 import 'package:amitproject/1_view/widgets/text_button.dart';
+import 'package:amitproject/2_controller/complete_profile_cubit/complete_profile_cubit.dart';
 import 'package:amitproject/2_controller/profile_cubit/profile_cubit.dart';
 import 'package:amitproject/utility/app_colors.dart';
 import 'package:amitproject/utility/app_images.dart';
@@ -164,10 +165,10 @@ class _PersonalDetailScreenState extends State<PersonalDetailScreen> {
                       MainButton(
                         color: AppColors.primaryColor,
                         onPressed: () {
-                          cubit.editProfileBioAddressMobile(
+                          context.read<CompleteProfileCubit>().editProfileBioAddressMobile(
                               bio: bioController.text,
                               address:addressController.text,
-                              mobile: phoneController.text
+                              mobile: phoneController.text,
                           );
                           Navigator.pop(context);
                         },

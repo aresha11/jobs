@@ -3,6 +3,7 @@ import 'package:amitproject/2_controller/bottom_navigation_bar/bottomnavigationb
 import 'package:amitproject/2_controller/change_password_cubit/change_password_cubit.dart';
 import 'package:amitproject/2_controller/chat_cubit/chat_cubit.dart';
 import 'package:amitproject/2_controller/complete_profile_cubit/complete_profile_cubit.dart';
+import 'package:amitproject/2_controller/database/local/recent_searched/recent_searched_cubit.dart';
 import 'package:amitproject/2_controller/database/local/shared_preference.dart';
 import 'package:amitproject/2_controller/home_cubit/home_cubit.dart';
 import 'package:amitproject/2_controller/profile_cubit/profile_cubit.dart';
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => SearchCubit(),
+            ),
+            BlocProvider(
+              create: (context) => RecentSearchedCubit()..createTable(),
             ),
             BlocProvider(
               create: (context) => HomeCubit(),

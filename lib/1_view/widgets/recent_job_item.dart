@@ -1,4 +1,5 @@
 import 'package:amitproject/0_model/recent_jobs_model.dart';
+import 'package:amitproject/0_model/saved_jobs_model.dart';
 import 'package:amitproject/1_view/widgets/primary_text.dart';
 import 'package:amitproject/2_controller/home_cubit/home_cubit.dart';
 import 'package:amitproject/2_controller/saved_cubit/saved_cubit.dart';
@@ -22,7 +23,7 @@ class RecentJobItem extends StatefulWidget {
     required this.jobSkill,
     required this.id,
     required this.index,
-    required this.savedImage
+
   })
       : super(key: key);
 
@@ -36,7 +37,6 @@ class RecentJobItem extends StatefulWidget {
   String jobSkill;
   String id;
   int index;
-  String savedImage;
 
 
   @override
@@ -49,7 +49,7 @@ class _RecentJobItemState extends State<RecentJobItem> {
     // TODO: implement initState
     super.initState();
   }
-
+bool isClicked=false;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SavedCubit, SavedState>(
@@ -102,20 +102,23 @@ class _RecentJobItemState extends State<RecentJobItem> {
                   ),
                   InkWell(
                     onTap: () {
-                      context.read<SavedCubit>().changeSavedIcon(index: widget.index);
+                      isClicked=!isClicked;
                       setState(() {
 
                       });
-                       context.read<SavedCubit>().addSavedJob(comp_id: RecentJobsModel.data[widget.index].id.toString());
-                      // context.read<SavedCubit>().getAllSavedJobs();
+                      if(isClicked==true){
+                        context.read<SavedCubit>().addSavedJob(jop_id: RecentJobsModel.data[widget.index].id.toString());
+                      }
 
                     },
                     child: ImageIcon(
                       AssetImage(
-                         widget.savedImage
+                          isClicked==false?
+                          AppImages.archiveWhite:
+                          AppImages.archiveBlue
                       ),
-                      size: 30,
-                      color: Colors.black,
+                      color: Colors.blue,
+
                     ),
                   ),
                 ],
@@ -184,6 +187,7 @@ class _RecentJobItemState extends State<RecentJobItem> {
                   )
                 ],
               ),
+              SizedBox( height: .5.h,)
             ],
           ),
 

@@ -28,11 +28,11 @@ class MainSearchItem extends StatelessWidget {
                   // mainAxisSize: MainAxisSize.min,
                   children: [
                     PrimaryText(
-                        title: SearchModel.data![index].name.toString(),
+                        title: SearchModel.data[index].name.toString(),
                         size: 20),
                     PrimaryText(
                         title:
-                            "${SearchModel.data![index].compName.toString()} • ${SearchModel.data![index].location.toString()}",
+                            "${SearchModel.data[index].compName.toString()} • ${SearchModel.data[index].location.toString()}",
                         size: 14),
                   ],
                 ),
@@ -53,7 +53,7 @@ class MainSearchItem extends StatelessWidget {
                       color: AppColors.secondaryColor),
                   child: PrimaryText(
                       size: 16,
-                      title: SearchModel.data![index].jobTimeType.toString(),
+                      title: SearchModel.data[index].jobTimeType.toString(),
                       color: AppColors.primaryColor),
                 ),
               SizedBox(width: 1.5.w,),
@@ -66,7 +66,7 @@ class MainSearchItem extends StatelessWidget {
                       color: AppColors.secondaryColor),
                   child: PrimaryText(
                     size: 16,
-                    title: SearchModel.data![index].jobType.toString(),
+                    title: SearchModel.data[index].jobType.toString(),
                     color: AppColors.primaryColor,
                   ),
                 ),
@@ -74,7 +74,7 @@ class MainSearchItem extends StatelessWidget {
 
               RichText(
                     text: TextSpan(
-                        text: "\$${SearchModel.data![index].salary.toString()}",
+                        text: "\$${SearchModel.data[index].salary.toString()}",
                         style: const TextStyle(
                             color: AppColors.greenColor, fontSize: 16),
                         children: const [

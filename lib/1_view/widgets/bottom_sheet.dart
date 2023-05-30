@@ -2,6 +2,7 @@ import 'package:amitproject/1_view/widgets/input_field.dart';
 import 'package:amitproject/1_view/widgets/main_button.dart';
 import 'package:amitproject/1_view/widgets/primary_text.dart';
 import 'package:amitproject/1_view/widgets/text_button.dart';
+import 'package:amitproject/2_controller/database/local/recent_searched/recent_searched_cubit.dart';
 import 'package:amitproject/2_controller/search_cubit/search_cubit.dart';
 import 'package:amitproject/utility/app_images.dart';
 import 'package:flutter/material.dart';
@@ -28,10 +29,13 @@ class BottomSheetSetFilter extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 3.h,),
               Row(
                 children: [
                    IconButton(
-                          onPressed: () {}, icon: Icon(Icons.arrow_back)),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }, icon: Icon(Icons.arrow_back)),
                   Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,9 +50,10 @@ class BottomSheetSetFilter extends StatelessWidget {
                   ButtonText(
                     title: "Reset",
                     onPress: () {
-                      context.read<SearchCubit>().searchFilterJobs(nameController.text, locationController.text, salaryController.text,);
-                      context.read<SearchCubit>().changeFilter();
-                      Navigator.pop(context);
+                      nameController.text="";
+                      locationController.text="";
+                      salaryController.text="";
+
                     },
                   ),
                 ],
@@ -132,7 +137,7 @@ class BottomSheetSetFilter extends StatelessWidget {
                 prefixIcon: ImageIcon(AssetImage(AppImages.salary)),
               ),
               SizedBox(
-                height: 12.h,
+                height: 38.h,
               ),
               MainButton(
                 color: AppColors.primaryColor,
@@ -140,10 +145,10 @@ class BottomSheetSetFilter extends StatelessWidget {
                 textColor: Colors.white,
                 textSize: 16,
                 onPressed: (){
-                  // if(formKey.currentState!.validate()){
-                  //   context.read<SearchCubit>().searchFilterJobs(nameController.text, locationController.text, salaryController.text);
-                  //   Navigator.pop(context);
-                  // }
+                  context.read<SearchCubit>().searchFilterJobs(nameController.text, locationController.text, salaryController.text,);
+                  context.read<SearchCubit>().changeFilter();
+                  context.read<RecentSearchedCubit>().insertData(title: nameController.text);
+                  Navigator.pop(context);
                 },
               )
             ],

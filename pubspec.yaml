@@ -60,6 +60,7 @@ dependencies:
   file_picker:
   smooth_page_indicator:
   percent_indicator:
+  sqflite:
 
 
 

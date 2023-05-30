@@ -3,7 +3,7 @@ import 'package:amitproject/1_view/widgets/input_field.dart';
 import 'package:amitproject/1_view/widgets/primary_text.dart';
 import 'package:amitproject/2_controller/database/local/shared_preference.dart';
 import 'package:amitproject/2_controller/home_cubit/home_cubit.dart';
-import 'package:amitproject/2_controller/saved_cubit/saved_cubit.dart';
+import 'package:amitproject/2_controller/search_cubit/search_cubit.dart';
 import 'package:amitproject/utility/app_images.dart';
 import 'package:amitproject/utility/routes.dart';
 import 'package:flutter/material.dart';
@@ -87,12 +87,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 3.h,
                   ),
                   InputField(
+                    autoFocus: false,
                     onFieldSubmitted: () {},
                     validated: () {},
                     onEditingComplete: () {},
                     onchange: () {},
                     onTap: () {
                       Navigator.pushNamed(context, AppRoutes.searchScreenRoute);
+                      context.read<SearchCubit>().isSearched=false;
                     },
                     prefixIcon: ImageIcon(AssetImage(AppImages.searchIcon)),
                     hint: AppStrings.search,
@@ -169,7 +171,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: RecentJobsModel.data.length,
                       itemBuilder: (context, index) =>
                           RecentJobItem(
-                            savedImage: context.read<SavedCubit>().images[index],
                             index: index,
                             name: RecentJobsModel.data[index].name.toString(),
                             compName: RecentJobsModel.data[index].compName.toString(),

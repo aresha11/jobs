@@ -17,37 +17,38 @@ part 'complete_profile_state.dart';
 class CompleteProfileCubit extends Cubit<CompleteProfileState> {
   CompleteProfileCubit() : super(CompleteProfileInitial());
 
-  double percentage =SharedPreference.get(key: "percentage").toString()=="null"?0:SharedPreference.get(key: "percentage");
+  double percentage =SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}percentage").toString()=="null"?0:SharedPreference.get(key: "${SharedPreference.get(key: "loginEmail")}percentage");
   DioHelper dioHelper=DioHelper();
 
   changePercentage(){
     if(percentage<1){
       percentage= percentage +.25;
     }
-    SharedPreference.put(key: "percentage", value: percentage);
+    SharedPreference.put(key: "${SharedPreference.get(key: "loginEmail")}percentage", value: percentage);
     emit(ChangePercentageState());
   }
+
 
   List<CompleteProfileModel> items = [
     CompleteProfileModel(
         mainText: "personal Details",
         text: "Full Name Email",
-        isCompleted: true,
+        isCompleted:SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit mobile").toString()=="null"? false:true,
         route: AppRoutes.personalDetailsScreenRoute),
     CompleteProfileModel(
         mainText: "Education",
         text: "Enter Your Educational",
-        isCompleted: false,
+        isCompleted:SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit education").toString()=="null"? false:true,
         route: AppRoutes.educationScreenRoute),
     CompleteProfileModel(
         mainText: "Experience",
         text: "Enter Your Work Experience",
-        isCompleted: false,
+        isCompleted: SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit exp").toString()=="null"? false:true,
         route: AppRoutes.experienceScreenRoute),
     CompleteProfileModel(
         mainText: "Portfolio Screen",
         text: "Create Your Portfolio",
-        isCompleted: false,
+        isCompleted:SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit port").toString()=="null"? false:true,
           route: AppRoutes.completePortfolioScreenRoute),
   ];
 
@@ -78,9 +79,9 @@ class CompleteProfileCubit extends Cubit<CompleteProfileState> {
         SharedPreference.put(key: "mobile", value: EditProfileBioAddressMobileModel.data!.mobile.toString());
 
 
-        if(SharedPreference.get(key: "entered edit mobile").toString()=="null"){
+        if(SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit mobile").toString()=="null"){
           changePercentage();
-          SharedPreference.put(key: "entered edit mobile", value: 1);
+          SharedPreference.put(key: "${SharedPreference.get(key: "email")}entered edit mobile", value: 1);
         }
       }
     }).catchError((error) {
@@ -114,9 +115,9 @@ class CompleteProfileCubit extends Cubit<CompleteProfileState> {
         },
         token: SharedPreference.get(key: 'token')
     ).then((value) {
-      if(SharedPreference.get(key: "entered edit education").toString()=="null"){
+      if(SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit education").toString()=="null"){
         changePercentage();
-        SharedPreference.put(key: "entered edit education", value: 1);
+        SharedPreference.put(key: "${SharedPreference.get(key: "email")}entered edit education", value: 1);
       }
       emit(EducationSuccessState());
       Navigator.popAndPushNamed(context, AppRoutes.completeProfileScreenRoute);
@@ -149,9 +150,9 @@ class CompleteProfileCubit extends Cubit<CompleteProfileState> {
         },
         token: SharedPreference.get(key: 'token')
     ).then((value) {
-      if(SharedPreference.get(key: "entered edit exp").toString()=="null"){
+      if(SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit exp").toString()=="null"){
         changePercentage();
-        SharedPreference.put(key: "entered edit exp", value: 1);
+        SharedPreference.put(key: "${SharedPreference.get(key: "email")}entered edit exp", value: 1);
       }
       emit(ExperienceSuccessState());
       Navigator.popAndPushNamed(context, AppRoutes.completeProfileScreenRoute);
@@ -178,9 +179,9 @@ class CompleteProfileCubit extends Cubit<CompleteProfileState> {
           token: SharedPreference.get(key: 'token'),
           data: data)
           .then((value) {
-        if(SharedPreference.get(key: "entered edit port").toString()=="null"){
+        if(SharedPreference.get(key: "${SharedPreference.get(key: "email")}entered edit port").toString()=="null"){
           changePercentage();
-          SharedPreference.put(key: "entered edit port", value: 1);
+          SharedPreference.put(key: "${SharedPreference.get(key: "email")}entered edit port", value: 1);
         }
         emit(AddPortfolioSuccessState());
       }).catchError((onError) {

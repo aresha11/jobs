@@ -29,11 +29,11 @@ class MainSearchFilterItem extends StatelessWidget {
                   // mainAxisSize: MainAxisSize.min,
                   children: [
                     PrimaryText(
-                        title: SearchFilteringModel.data![index].name.toString(),
+                        title: SearchFilteringModel.data[index].name.toString(),
                         size: 20),
                     PrimaryText(
                         title:
-                        "${SearchFilteringModel.data![index].compName.toString()} • ${SearchModel.data![index].location.toString()}",
+                        "${SearchFilteringModel.data[index].compName.toString()} • ${SearchModel.data[index].location.toString()}",
                         size: 14),
                   ],
                 ),
@@ -54,7 +54,7 @@ class MainSearchFilterItem extends StatelessWidget {
                     color: AppColors.secondaryColor),
                 child: PrimaryText(
                     size: 16,
-                    title: SearchFilteringModel.data![index].jobTimeType.toString(),
+                    title: SearchFilteringModel.data[index].jobTimeType.toString(),
                     color: AppColors.primaryColor),
               ),
               SizedBox(width: 1.5.w,),
@@ -67,7 +67,7 @@ class MainSearchFilterItem extends StatelessWidget {
                     color: AppColors.secondaryColor),
                 child: PrimaryText(
                   size: 16,
-                  title: SearchFilteringModel.data![index].jobType.toString(),
+                  title: SearchFilteringModel.data[index].jobType.toString(),
                   color: AppColors.primaryColor,
                 ),
               ),
@@ -75,7 +75,7 @@ class MainSearchFilterItem extends StatelessWidget {
 
               RichText(
                   text: TextSpan(
-                      text: "\$${SearchFilteringModel.data![index].salary.toString()}",
+                      text: "\$${SearchFilteringModel.data[index].salary.toString()}",
                       style: const TextStyle(
                           color: AppColors.greenColor, fontSize: 16),
                       children: const [

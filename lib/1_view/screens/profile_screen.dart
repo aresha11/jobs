@@ -97,6 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 onPressed: () {
                                                   Navigator.pushNamedAndRemoveUntil(context, AppRoutes.splashScreenRoute, (route) => false);
                                                   SharedPreference.put(key: "loggedIn", value: "false");
+                                                 SharedPreference.clearData();
                                                 },
                                                 child: Text(
                                                   "Confirm",

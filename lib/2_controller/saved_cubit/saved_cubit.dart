@@ -12,44 +12,42 @@ part 'saved_state.dart';
 class SavedCubit extends Cubit<SavedState> {
   SavedCubit() : super(SavedInitial());
 
-  List indexes=[];
+
   bool isSaved=false;
 
   DioHelper dioHelper =DioHelper();
 
 
 
-  changeSavedIcon({required index}){
-    bool found=false;
-
-     for(int i=0;i<indexes.length;i++){
-       if(index==indexes[i]){
-         indexes.remove(index);
-         found =true;
-
-       }
-     }
-    if(found==false){
-      indexes.add(index);
-    }
-   print(indexes);
-
-    changeIconColor(index: index);
-    emit(ChangeIconState());
-  }
-List<String>images=[AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite];
-//String img=AppImages.archiveWhite;
-  changeIconColor({index}){
-    for(int i=0;i<indexes.length;i++){
-      if(index==indexes[i]){
-        images.add(AppImages.archiveBlue);
-      }else{
-        images.add(AppImages.archiveWhite);
-      }
-    }
-  }
-
-
+  // changeSavedIcon({required index}){
+  //   bool found=false;
+  //
+  //    for(int i=0;i<indexes.length;i++){
+  //      if(index==indexes[i]){
+  //        indexes.remove(index);
+  //        found =true;
+  //
+  //      }
+  //    }
+  //   if(found==false){
+  //     indexes.add(index);
+  //   }
+  //  print(indexes);
+  //
+  //   changeIconColor(index: index);
+  //   emit(ChangeIconState());
+  // }
+// List<String>images=[AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite,AppImages.archiveWhite];
+// //String img=AppImages.archiveWhite;
+//   changeIconColor({index}){
+//     for(int i=0;i<indexes.length;i++){
+//       if(index==indexes[i]){
+//         images.add(AppImages.archiveBlue);
+//       }else{
+//         images.add(AppImages.archiveWhite);
+//       }
+//     }
+//   }
 
 
 
@@ -60,7 +58,7 @@ List<String>images=[AppImages.archiveWhite,AppImages.archiveWhite,AppImages.arch
   //////////    addFavouriteJob.
 
   void addSavedJob({
-    required String comp_id,
+    required String jop_id,
 
   }) {
     emit(LoadingSavedJobsState());
@@ -70,7 +68,7 @@ List<String>images=[AppImages.archiveWhite,AppImages.archiveWhite,AppImages.arch
         token:  SharedPreference.get(key: "token"),
         data: {
           "user_id":SharedPreference.get(key: "id"),
-          "job_id":comp_id
+          "job_id":jop_id
         }).then((value) {
 
       if (value.statusCode ==200) {

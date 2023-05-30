@@ -60,9 +60,15 @@ class _AppliedScreenItemState extends State<AppliedScreenItem> {
                     widget.isClicked = !widget.isClicked;
                     setState(() {});
                   },
-                  child: Image.asset(widget.isClicked == false
-                      ? AppImages.archiveWhite
-                      : AppImages.archiveBlue)),
+                  child: ImageIcon(
+                    AssetImage(
+                       widget.isClicked==false?
+                        AppImages.archiveWhite:
+                        AppImages.archiveBlue
+                    ),
+                    color: Colors.blue,
+
+                  )  ),
             ],
           ),
           SizedBox(

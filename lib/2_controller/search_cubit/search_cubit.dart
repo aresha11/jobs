@@ -39,7 +39,6 @@ class SearchCubit extends Cubit<SearchState> {
     ).then((value) {
       if (value.statusCode ==200) {
         emit(GetSearchDataSuccessState(searchModel: SearchModel.fromJson(value.data)));
-        print(SearchModel.data![0].name);
       }
     }).catchError((error) {
       if (kDebugMode) {
@@ -72,10 +71,7 @@ void changeFilter(){
     ).then((value) {
       if (value.statusCode ==200) {
         emit(GetSearchFilteringDataSuccessState(searchFilteringModel: SearchFilteringModel.fromJson(value.data)));
-        searchController.text=SearchFilteringModel.data!.isEmpty?"":SearchFilteringModel.data![0].name.toString();
-        print(SearchFilteringModel.data![0].name);
-        print(SearchFilteringModel.data![0].location);
-        print(SearchFilteringModel.data![0].salary);
+
       }
     }).catchError((error) {
       if (kDebugMode) {
